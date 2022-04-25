@@ -52,12 +52,17 @@
             } else {
               highlightLayer.setStyle({
                 fillColor: '#ffff00',
-                fillOpacity: 1
+                fillOpacity: 0.3
               });
             }
         }
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1, zoomControl:true, fullscreenControl: true, fullscreenControlOptions: {position: 'topleft'}
+            zoomControl:true, maxZoom:19, minZoom:14, zoomControl:true, fullscreenControl: true, fullscreenControlOptions: {position: 'topleft'},maxBounds: [
+                            //south west
+                            [-22.00508,-46.69833], 
+                            //north east
+                            [-21.96077,-46.79328]  
+                            ]
         }).fitBounds([[-22.001473120563716,-46.771884903005386],[-21.9715909161271,-46.73062669652984]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -332,7 +337,7 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['nós'] !== null?String('<div style="color: #00a200; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['nós']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ns_2'});
+            layer.bindTooltip((layer.feature.properties['nós'] !== null?String('<div style="color: #ff0066; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['nós']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ns_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
