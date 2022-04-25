@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.css" />           
         <style>
         html, body, #map {
             width: 100%;
@@ -35,6 +36,7 @@
         <script src="data/Drenagem_1.js"></script>
         <script src="data/Ns_2.js"></script>
         <script src="data/Bacias_3.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@v0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -57,7 +59,10 @@
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        //L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        
+        L.control.locate({initialZoomLevel: 15}).addTo(map);
+        //var ctlSidebar = L.control.sidebar('side-bar', {closeButton: false}).addTo(map);
         var measureControl = new L.Control.Measure({
             position: 'topleft',
             primaryLengthUnit: 'meters',
